@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             tvTemp.setText("" + Math.round((weather.temperature.getTemp() - 273.15)) + "°С ");
             tvHumidity.setText("" +weather.currentCondition.getHumidity() + "%");
             tvWind.setText(""+weather.wind.getSpeed()+ " m/s");
+            int a;
         }
     }
 
