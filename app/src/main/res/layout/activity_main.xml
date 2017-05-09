@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/main_bg"
+    tools:context="com.baunvb.quickopenapp.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:gravity="center"
+        android:background="@drawable/bg_layout_weather"
+        android:layout_weight="1">
+        <ImageView
+            android:id="@+id/condIcon"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@id/condIcon"
+            android:gravity="center"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                style="@style/tempStyle"/>
+            <TextView
+                android:id="@+id/condDescr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/temp"
+                android:layout_toRightOf="@id/condIcon"/>
+            <TextView
+                android:id="@+id/humidity"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#2E9AFE"/>
+            <TextView
+                android:id="@+id/humidityLab"
+                android:layout_toLeftOf="@id/humidity"
+                android:layout_width="wrap_content"
+                android:text="Humidity "
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/wind"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#2E9AFE"/>
+            <TextView
+                android:id="@+id/windLab"
+                android:layout_toLeftOf="@id/wind"
+                android:layout_below="@id/humidity"
+                android:layout_width="wrap_content"
+                android:text="Wind "
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/cityText"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/windLab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_layout_dialer"
+            android:layout_weight="1">
+            <Button
+                android:layout_width="50dp"
+                android:id="@+id/bt_dialer"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_button_dialer"
+                android:layout_height="50dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:paddingBottom="16dp"
+                android:paddingLeft="8dp"
+                android:text="Dialer"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_layout_messaging"
+            android:layout_weight="1">
+            <Button
+                android:layout_width="50dp"
+                android:id="@+id/bt_messeaging"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_button_messeaging"
+                android:layout_height="50dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:paddingBottom="16dp"
+                android:paddingLeft="8dp"
+                android:text="Messaging"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content" />
+
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_layout_contacts"
+            android:layout_weight="1">
+            <Button
+                android:layout_width="50dp"
+                android:id="@+id/bt_contacts"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_button_contacts"
+                android:layout_height="50dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:paddingBottom="16dp"
+                android:paddingLeft="8dp"
+                android:text="Contacts"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_layout_camera"
+            android:layout_weight="1">
+            <Button
+                android:layout_width="50dp"
+                android:id="@+id/bt_camera"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_button_camera"
+                android:layout_height="50dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:paddingBottom="16dp"
+                android:paddingLeft="8dp"
+                android:text="Camera"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_layout_music"
+            android:layout_weight="1">
+            <Button
+                android:layout_width="50dp"
+                android:id="@+id/bt_music"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_button_music"
+                android:layout_height="50dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:paddingBottom="16dp"
+                android:paddingLeft="8dp"
+                android:text="Music"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_layout_gallery"
+            android:layout_weight="1">
+            <Button
+                android:layout_width="50dp"
+                android:id="@+id/bt_gallery"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_button_gallery"
+                android:layout_height="50dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:paddingBottom="16dp"
+                android:paddingLeft="8dp"
+                android:text="Gallery"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
