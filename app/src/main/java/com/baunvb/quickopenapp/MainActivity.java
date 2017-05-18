@@ -1,12 +1,19 @@
 package com.baunvb.quickopenapp;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -22,12 +29,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btDialer, btMesseaging, btContacts, btCamera, btMusic, btGallery;
     private ImageView imgCondIcon;
     private TextView tvTemp, tvHumidity, tvCondDescr, tvCity, tvWind;
-
+    private LocationManager lm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        turnOnGPS();
         initView();
+
     }
 
     private void initView() {
@@ -53,10 +62,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvWind = (TextView) findViewById(R.id.wind);
 
         String city = "Ha Noi";
+
+        lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         JSONWeatherTask task = new JSONWeatherTask();
         task.execute(new String[]{city});
-    }
 
+    }
+    
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUES_CODE && resultCode == RESULT_OK){
@@ -77,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             try {
                 weather = JSONWeatherParser.getWeather(data);
 
-                // Let's retrieve the icon
                 weather.iconData = ( (new WeatherHttpClient()).getImage(weather.currentCondition.getIcon()));
 
             } catch (JSONException e) {
@@ -144,4 +155,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
+    private void turnOnGPS() {
+        LocationManager locationMgr
+                = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        boolean isGPSEnable = locationMgr.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        if(isGPSEnable == false){
+            AlertDialog dialog = new AlertDialog.Builder(this).create();
+            dialog.setTitle("Alert GPS");
+            dialog.setMessage("Do you want to turn on GPS?");
+            dialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent();
+                    intent.setAction(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivity(intent);
+                }
+            });
+            dialog.setButton(AlertDialog.BUTTON_NEUTRAL, "NO", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            dialog.show();
+        }
+    }
+
 }
